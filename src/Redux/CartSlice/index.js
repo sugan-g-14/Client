@@ -13,19 +13,56 @@ const CartSlice = createSlice({
             "rating": {
                 "rate": 3.9,
                 "count": 120
-            }
+            },
+            "count":1
         }
     ],
     reducers:{
         addItem:(state,action)=>{
-            return [...state,action.payload];
+            return [...state,{...action.payload,
+                count:1
+            }]
         },
         removeItem:(action,state)=>{
-            return [...state,action.payload];
+            let filtered = state.filter((elem)=>elem != action.payload)
+            return filtered;
+        },
+        searchItem:(action,state)=>{
+            
+        },
+        increment:(state,action)=>{
+            let newState = state.map((item)=>{
+                if(item.id == action.payload.id){
+                    console.log("same");
+                    item.count++;
+                    return item;
+                }
+                else{
+                    return item;
+                }
+            })
+            return state;
+        },
+        decrement:(state,action) =>{
+            let newState = state.map((item)=>{
+                if(item.id == action.payload.id){
+                    if(item.count == 0){
+                        console.log("remove");
+                    }
+                    else{
+                        item.count--;
+                        return item;
+                    }
+                }
+                else{
+                    return item;
+                }
+            })
+            return state;
         }
     }
 })
 
 
-export const {addItem,removeItem} = CartSlice.actions
+export const {addItem,removeItem,increment,decrement} = CartSlice.actions
 export default CartSlice.reducer

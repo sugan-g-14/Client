@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector,useDispatch } from "react-redux";
+import { decrement, increment } from "../../../Redux/CartSlice";
 import "./Box.scss"
 
 const Box = ({elem}) =>{
     const cart = useSelector(state=>state.Cart);
+    const dispatch = useDispatch();
+
     return(
         <div className="Box">
             <div className="img">
@@ -14,9 +17,9 @@ const Box = ({elem}) =>{
                 <p>Catagory: {elem.category}</p>
             </div>
             <div className="quantity">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
+                <button onClick={()=>dispatch(decrement(elem))}>-</button>
+                <p>{elem.count}</p>
+                <button onClick={()=>dispatch(increment(elem))}>+</button>
             </div>
             <div className="price">
                 <p>${elem.price}</p>
