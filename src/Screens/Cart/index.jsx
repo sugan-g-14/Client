@@ -4,11 +4,22 @@ import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./Cart.scss";
 import Box from "./Box";
+import Swal from 'sweetalert2'
+import 'sweetalert2/src/sweetalert2.scss'
+
 
 const Cart = () =>{
     const Cart = useSelector(state=>state.Cart.items);
     const total_count = useSelector(state=>state.Cart.totalCount);
     const total_amount = useSelector(state=>state.Cart.totalAmount);
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        Swal.fire(
+            'Order placed!',
+            'BUY THINK GROW!',
+            'success'
+        )
+    }
     const navigate = useNavigate();
     return(
         <div className="Cart">
@@ -40,7 +51,7 @@ const Cart = () =>{
                 </div>
             </div>
             <div className="Payment">
-                <form>
+                <form onSubmit={(e)=>handleSubmit(e)}>
 
                     <div className="Order">
                         <h1>ORDER SUMMARY</h1>
@@ -59,6 +70,8 @@ const Cart = () =>{
                             <label htmlFor="">Payment</label>
                             <select name="" id="" required>
                                 <option value="">Select</option>
+                                <option value="Gpay">GPAY</option>
+                                <option value="COD">Cash On Delivery</option>
                             </select>
                         </div>
                         <div className="field">
@@ -69,7 +82,7 @@ const Cart = () =>{
                         <div className="line"></div>
                         <div className="Order_bottom">
                             <h1>Total Cost: ${total_amount}</h1>
-                            <button onClick={(e)=>e.preventDefault()}>Checkout</button>
+                            <button type="submit">Checkout</button>
                         </div>
                     </div>
                 </form>
