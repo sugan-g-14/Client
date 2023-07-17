@@ -13,9 +13,9 @@ const Body = () =>{
         gsap.fromTo(".Container>*",0.2,{y:100,opacity:0},{y:0,opacity:1,stagger:0.1});
     },[])
 
-    
+
     const Products = useSelector((state)=>state.Products.products);
-    console.log(Products);
+
     return(
         <div className="Body">
             <div className="Filter">

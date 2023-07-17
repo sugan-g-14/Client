@@ -25,7 +25,7 @@ const Box = ({elem}) =>{
                 <p>${elem.price}</p>
             </div>
             <div className="total_amount">
-                <p>${elem.price}</p>
+                <p>${elem.price*elem.count}</p>
 
             </div>
         </div>

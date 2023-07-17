@@ -10,14 +10,34 @@ export const getProducts = createAsyncThunk('gets/getProducts',async () =>{
 const ProductSlice = createSlice({
     name:"products",
     initialState:{
+        AllProducts:[],
         products:[],
+        search:'',
         loading:false
+    },
+    reducers:{
+        searchRed:(state,action)=>{
+            const { value } = action.payload;
+            // return state = action.payload
+            const result = state.AllProducts.filter((obj)=>{
+                for(let key in obj){
+                    const objVal = obj[key].toString().toLowerCase();
+                    if (objVal.includes(value.toLowerCase())) {
+                        return obj;
+                    }
+                    console.log(objVal);
+                }
+            })
+            state.search = value
+            state.products = result;
+        }
     },
     extraReducers:{
         [getProducts.pending]:(state,action)=>{
             state.loading = true
         },
         [getProducts.fulfilled]:(state,action)=>{
+            state.AllProducts = action.payload
             state.products = action.payload
             state.loading = false
         },
@@ -26,5 +46,7 @@ const ProductSlice = createSlice({
         }
     }
 })
+
+export const {searchRed} = ProductSlice.actions;
 
 export default ProductSlice.reducer

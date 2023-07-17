@@ -6,7 +6,9 @@ import "./Cart.scss";
 import Box from "./Box";
 
 const Cart = () =>{
-    const Cart = useSelector(state=>state.Cart);
+    const Cart = useSelector(state=>state.Cart.items);
+    const total_count = useSelector(state=>state.Cart.totalCount);
+    const total_amount = useSelector(state=>state.Cart.totalAmount);
     const navigate = useNavigate();
     return(
         <div className="Cart">
@@ -15,7 +17,7 @@ const Cart = () =>{
                     <div className="Shopping_cart">
                         <div className="ShopHead">
                             <h1>Shopping Cart</h1>
-                            <h3>Items: 2</h3>
+                            <h3>Items: {total_count}</h3>
                         </div>
                         <div className="line"></div>
                         <div className="ShopHead">
@@ -38,36 +40,39 @@ const Cart = () =>{
                 </div>
             </div>
             <div className="Payment">
-                <div className="Order">
-                    <h1>ORDER SUMMARY</h1>
-                    <div className="Order_head">
-                        <div className="row">
-                            <h2>Item 2</h2>
-                            <h2>$200</h2>
+                <form>
+
+                    <div className="Order">
+                        <h1>ORDER SUMMARY</h1>
+                        <div className="Order_head">
+                            <div className="row">
+                                <h2>Item {total_count}</h2>
+                                <h2>${total_amount}</h2>
+                            </div>
+                        <div className="line"></div>
                         </div>
-                    <div className="line"></div>
+                        <div className="field">
+                            <label htmlFor="">Shipping</label>
+                            <input required type="text" placeholder="Shipping Address" />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="">Payment</label>
+                            <select name="" id="" required>
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                        <div className="field">
+                            <label htmlFor="">Promo Code:</label>
+                            <input required type="text" placeholder="Code"/>
+                            <button onClick={(e)=>e.preventDefault()}>Apply Coupen</button>
+                        </div>
+                        <div className="line"></div>
+                        <div className="Order_bottom">
+                            <h1>Total Cost: ${total_amount}</h1>
+                            <button onClick={(e)=>e.preventDefault()}>Checkout</button>
+                        </div>
                     </div>
-                    <div className="field">
-                        <label htmlFor="">Shipping</label>
-                        <input type="text" placeholder="Shipping Address" />
-                    </div>
-                    <div className="field">
-                        <label htmlFor="">Payment</label>
-                        <select name="" id="">
-                            <option value="">Select</option>
-                        </select>
-                    </div>
-                    <div className="field">
-                        <label htmlFor="">Promo Code:</label>
-                        <input type="text" placeholder="Code"/>
-                        <button>Apply Coupen</button>
-                    </div>
-                    <div className="line"></div>
-                    <div className="Order_bottom">
-                        <h1>Total Cost: $400</h1>
-                        <button>Checkout</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     )
