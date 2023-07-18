@@ -1,11 +1,14 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
 import "./Body.scss"
 import Card from "./Card";
 import { useSelector,useDispatch } from "react-redux";
 import { HiMiniChevronDoubleRight } from 'react-icons/hi2'
+import { searchRed } from "../../../Redux/ProductSlice";
 import gsap from "gsap";
 
 const Body = () =>{
+
+    const dispatch = useDispatch();
     useEffect(()=>{
         gsap.fromTo(".Filter",1,{opacity:0,x:-10},{x:0,opacity:1,delay:1.5});
         gsap.fromTo(".Recommend",1,{opacity:0,x:-10},{x:0,opacity:1,delay:1});
@@ -13,19 +16,31 @@ const Body = () =>{
         gsap.fromTo(".Container>*",0.2,{y:100,opacity:0},{y:0,opacity:1,stagger:0.1});
     },[])
 
+    const [Filter,setFilter] = useState(false);
+    const handleCat = (e) =>{
+        let value = e.target.value;
+        console.log(value);
+        dispatch(searchRed({value}))
+    }
+
 
     const Products = useSelector((state)=>state.Products.products);
 
     return(
         <div className="Body">
-            <div className="Filter">
-                <button>
+            <div className="Filter" >
+                <button onClick={()=>setFilter(prev=>!prev)}>
                     <p>Apply Filter</p>
                     <HiMiniChevronDoubleRight/>
                 </button>
-                <div className="hidden">
-                    <select name="catagory" id="catagory">
+                <div className={(Filter)?"view":"hidden"}>
+                    <select name="catagory" id="catagory" onChange={(e)=>handleCat(e)}>
                         <option value="">Select Catagory</option>
+                        <option value="men's clothing">Men's clothing</option>
+                        <option value="jewelery">jewelery</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="women's clothing">
+                            Women's clothing</option>
                     </select>
                 </div>
             </div>

@@ -3,6 +3,12 @@
         width: 100%;
         display: flex;  
         margin: 20px 0px;
+        .hidden{
+            display: none;
+        }
+        .view{
+            display: block;
+        }
         button,select{
             display: flex;
             align-items: center;
@@ -22,6 +28,10 @@
                 transition: all 0.5s ease;
                 cursor: pointer;
             }
+        }
+        #apply{
+            background-color: var(--secondary-color);
+            color:var(--primary-color);
         }
         select{
             padding: 5px;
