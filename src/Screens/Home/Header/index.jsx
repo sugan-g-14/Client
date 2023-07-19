@@ -30,7 +30,9 @@ const Header = () =>{
             </div>
             <nav>
                 <input type="text" placeholder="Search" onChange={handleSearch}/>
-
+                    <p>Catagories</p>
+                    <p>Deals</p>
+                    <p onClick={()=>navigate("/Cart")} id="cart"><span>Cart</span><CiShoppingCart/></p>
             </nav>
             <div className="mobNav">
                 <AiOutlineBars size={28} onClick={()=>setOpen(prev=>!prev)}/>
