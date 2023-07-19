@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
     padding: 20px;
     .img{
         img{
@@ -46,7 +45,6 @@
         .mobNav{
             display: block;
             position: relative;
-            z-index: 1;
             .PopNav{
                 position: fixed;
                 margin: 12px 0px;

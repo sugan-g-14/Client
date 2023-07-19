@@ -5,6 +5,7 @@ import Banner from "./Banner";
 import Body from "./Body";
 
 const Home = () =>{
+    
     return(
         <div className="Home">
             <Header/>

@@ -83,7 +83,8 @@
 @media screen and (max-width:800px){
     .Card{
         height: 320px;
-        max-width: 300px;
+        width: 200px;
+        max-width:300px;
         flex-basis: 220px;
         border-radius: 8px;
         &_img{
@@ -97,21 +98,21 @@
             height: 50%;
             .desc_top{
                 h1{
-                    font-size: 15px;
+                    font-size: 12px;
                 }
                 h2{
-                    font-size: 12px;
+                    font-size: 10px;
                 }
             }
             p{
-                font-size: 10px;
+                font-size: 8px;
             }
             .rating{
                 font-size: 10px;
             }
             .btn{
                 button{
-                    height: 25px;
+                    height: 30px;
                     border-radius: 5px;
                     font-size: 10px;
                 }
