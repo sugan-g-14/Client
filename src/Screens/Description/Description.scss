@@ -12,7 +12,6 @@ body{
     .Desc_img{
         height: 100%;
         width: 45%;
-        background-color: orange;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -146,12 +145,15 @@ body{
     .Description{
         flex-direction: column;
         .Desc_img{
-            width: 80%;
-            height: 50%;
+            min-height: 70vh;
+            width: 100%;
+            img{
+                width: 80%;
+            }
         }
         .Desc_details{
             width: 80%;
-            height: 50%;
+            min-height: 100vh;
         }
     }
 }
