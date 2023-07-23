@@ -5,16 +5,31 @@ import { useNavigate } from 'react-router-dom'
 import { Ecommerce } from "../../../../Assets";
 import { addItem } from "../../../../Redux/CartSlice";
 import { selectDesc } from "../../../../Redux/DescSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import Swal from 'sweetalert2'
+
 
 const Card = ({product}) =>{
+    const socket = useSelector(state=>state.Socket.socket)
     let rate = Math.trunc(product.rating.rate);
     const dispatch = useDispatch();
+    const Cart = useSelector(state=>state.Cart.items);
     const navigate = useNavigate();
     const handleBuy = (product) =>{
         dispatch(selectDesc(product));
         navigate('/ProductDetails');
-        
+    }
+    const handleAddToCart = ()=>{
+        console.log(product);
+        if(Cart.some((item)=>JSON.stringify(item.id) === JSON.stringify(product.id))){
+            Swal.fire('Already found in the Cart')
+            navigate('/Cart');
+            console.log("Found");
+        }
+        else{
+            socket.emit('AddCart',product)
+            dispatch(addItem(product));
+        }
     }
     return(
         <div className="Card">
@@ -35,7 +50,7 @@ const Card = ({product}) =>{
                     <AiOutlineStar/>
                 </div>
                 <div className="btn">
-                    <button onClick={()=>dispatch(addItem(product))}>Add to cart</button>
+                    <button onClick={handleAddToCart}>Add to cart</button>
                     <button onClick={()=>handleBuy(product)}>Buy Now</button>
                 </div>
             </div>

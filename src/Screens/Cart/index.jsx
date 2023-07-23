@@ -9,6 +9,7 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 
 const Cart = () =>{
+    const navigate = useNavigate();
     const Cart = useSelector(state=>state.Cart.items);
     const total_count = useSelector(state=>state.Cart.totalCount);
     const total_amount = useSelector(state=>state.Cart.totalAmount);
@@ -19,8 +20,10 @@ const Cart = () =>{
             'BUY THINK GROW!',
             'success'
         )
+        setTimeout(()=>{
+            navigate('/');
+        },2000)
     }
-    const navigate = useNavigate();
     return(
         <div className="Cart">
             <div className="Shopping">

@@ -10,11 +10,13 @@ import Cart from './Screens/Cart';
 
 
 function App() {
+  const socket = useSelector(state=>state.Socket.socket)
   const dispatch = useDispatch();
   const {products,loading} = useSelector(state => state.Products);
 
   useEffect(()=>{
     dispatch(getProducts());
+    socket.emit('call');
   },[dispatch])
 
   return (  

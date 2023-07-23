@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import io from 'socket.io-client'
+
+
+const socket = io('http://localhost:5000');
+
+
 const CartSlice = createSlice({
     name:"Cart",
     initialState:{
