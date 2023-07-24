@@ -68,10 +68,12 @@
 @media screen and (max-width:800px){
     .Body{
         .Container{
+            justify-content: flex-start;
             gap: 20px;
         }
         .Container>*{
             margin: 0px;
+            flex: 0.5;
         }
     }
 }

@@ -5,8 +5,12 @@ import "./Box.scss"
 
 const Box = ({elem}) =>{
     const cart = useSelector(state=>state.Cart);
+    const socket = useSelector(state=>state.Socket.socket)
     const dispatch = useDispatch();
-
+    const handleIncrement = ()=>{
+        socket.emit("increment",elem);
+        dispatch(decrement(elem));
+    }
     return(
         <div className="Box">
             <div className="img">
@@ -17,7 +21,7 @@ const Box = ({elem}) =>{
                 <p>Catagory: {elem.category}</p>
             </div>
             <div className="quantity">
-                <button onClick={()=>dispatch(decrement(elem))}>-</button>
+                <button onClick={handleIncrement}>-</button>
                 <p>{elem.count}</p>
                 <button onClick={()=>dispatch(increment(elem))}>+</button>
             </div>
