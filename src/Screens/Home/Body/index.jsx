@@ -4,9 +4,10 @@ import Card from "./Card";
 import { useSelector,useDispatch } from "react-redux";
 import { HiMiniChevronDoubleRight } from 'react-icons/hi2'
 import { searchRed } from "../../../Redux/ProductSlice";
+import Form from "./Form";
 import gsap from "gsap";
 
-const Body = () =>{
+const Body = ({setPop}) =>{
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -15,7 +16,6 @@ const Body = () =>{
         gsap.fromTo(".line",1,{opacity:0,y:10},{y:0,opacity:1,delay:1.5});
         gsap.fromTo(".Container>*",0.2,{y:100,opacity:0},{y:0,opacity:1,stagger:0.1});
     },[])
-
     const [Filter,setFilter] = useState(false);
     const handleCat = (e) =>{
         let value = e.target.value;
@@ -29,6 +29,9 @@ const Body = () =>{
     return(
         <div className="Body">
             <div className="Filter" >
+                <button onClick={()=>setPop(true)}>
+                    Sell My product
+                </button>
                 <button onClick={()=>setFilter(prev=>!prev)}>
                     <p>Apply Filter</p>
                     <HiMiniChevronDoubleRight/>
@@ -51,7 +54,7 @@ const Body = () =>{
             <div className="Container">
                 {
                     (Products).map((product)=>
-                            <Card product={product}/>
+                            <Card product={product} key={product.id}/>
                     )
                 }
             </div>

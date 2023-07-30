@@ -41,7 +41,7 @@ const Cart = () =>{
                         <div className="Box_contain">
                             {
                                 (Cart).map((elem)=>
-                                    <Box elem={elem}/>
+                                    <Box elem={elem} key={elem.id}/>
                                 )
                             }
                         </div>
