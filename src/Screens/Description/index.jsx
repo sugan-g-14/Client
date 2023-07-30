@@ -18,7 +18,7 @@ const Description = () =>{
                 <img src={Desc.image} alt="" />
             </div>
             <div className="Desc_details">
-                <div className="back" onClick={()=>{navigate('/')}}>
+                <div className="back" onClick={()=>{navigate('/Ecommerce')}}>
                     <HiOutlineArrowNarrowLeft/>
                     &nbsp;&nbsp;
                     <p>Continue shopping</p>

@@ -23,7 +23,7 @@ function App() {
     <Router>
         <div className="App">
             <Routes>
-              <Route path='/' element={<Home/>} />
+              <Route path='/Ecommerce' element={<Home/>} />
               <Route path='/ProductDetails' element={<Description/>}/>
               <Route path='/Cart' element={<Cart/>}/>
             </Routes>

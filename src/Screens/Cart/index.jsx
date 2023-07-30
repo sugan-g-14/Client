@@ -21,7 +21,7 @@ const Cart = () =>{
             'success'
         )
         setTimeout(()=>{
-            navigate('/');
+            navigate('/Ecommerce');
         },2000)
     }
     return(
@@ -46,7 +46,7 @@ const Cart = () =>{
                             }
                         </div>
                     </div>
-                    <div className="back" onClick={()=>{navigate('/')}}>
+                    <div className="back" onClick={()=>{navigate('/Ecommerce')}}>
                         <HiOutlineArrowNarrowLeft/>
                         &nbsp;&nbsp;
                         <p>Continue shopping</p>
