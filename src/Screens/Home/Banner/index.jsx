@@ -18,7 +18,7 @@ const Banner = () =>{
         <div className="Banner">
             <div className="Banner_left">
                 <h1>Grab offer upto 60% on Electronic Gadgets</h1>
-                <button>Buy Now</button>
+                <button>Grab soon</button>
             </div>
             <div className="Banner_right">
                 <img src={Ecommerce} alt="Ecommerce" />

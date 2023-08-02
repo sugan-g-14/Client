@@ -17,7 +17,7 @@ body{
         justify-content: center;
         background-color: white;
         img{
-            width: 20vw;
+            width:clamp(15vw,20vw,25vw);
         }
     }
     .Desc_details{
@@ -145,15 +145,21 @@ body{
     .Description{
         flex-direction: column;
         .Desc_img{
-            min-height: 70vh;
+            min-height: 50vh;
             width: 100%;
             img{
-                width: 80%;
+                width: 40vw;
             }
         }
         .Desc_details{
-            width: 80%;
+            width: 100%;
             min-height: 100vh;
+            .Desc_main{
+                h1{
+                    font-size: 25px;
+                    line-height: 35px;
+                }
+            }
         }
     }
 }

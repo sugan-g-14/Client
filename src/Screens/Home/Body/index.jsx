@@ -6,6 +6,7 @@ import { HiMiniChevronDoubleRight } from 'react-icons/hi2'
 import { searchRed } from "../../../Redux/ProductSlice";
 import Form from "./Form";
 import gsap from "gsap";
+import Preloader from "../../Preloader";
 
 const Body = ({setPop}) =>{
 
@@ -51,13 +52,18 @@ const Body = ({setPop}) =>{
                 <h2>Recommended for you</h2>
             </div>
             <div className="line"></div>
-            <div className="Container">
-                {
-                    (Products).map((product)=>
-                            <Card product={product} key={product.id}/>
-                    )
-                }
-            </div>
+            {
+                (Products.length>0)?
+                <div className="Container">
+                    {
+                        (Products)?.map((product)=>
+                        <Card product={product} key={product.id}/>
+                        )
+                    }
+                </div>
+                :
+                <Preloader/>
+            }
         </div>
     )
 }

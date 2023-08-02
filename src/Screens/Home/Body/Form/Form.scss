@@ -12,6 +12,8 @@
     &_content{
         height: 800px;
         width: 50%;
+        position: relative;
+        z-index: 800;
         min-width: 370px;
         background-color: white;
         border-radius: 12px;

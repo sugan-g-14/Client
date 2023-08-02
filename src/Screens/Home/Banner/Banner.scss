@@ -6,6 +6,7 @@
     height:auto;
     background-color: var(--secondary-color);
     border-radius: 8px;
+    z-index: 0;
     padding: 50px;
     &_left{
         width: 50%;
@@ -23,7 +24,7 @@
             width: 100%;
         }
         button{
-            width: clamp(50px,7vw,200px);
+            width: clamp(65px,7vw,200px);
             height: clamp(5px,4vw,50px);
             font-size: clamp(8px,1vw,20px);
             border-radius: 5px;
