@@ -42,8 +42,8 @@ const Header = () =>{
                         <h1>KAVIN KUMAR M</h1>
                         <p>primary user</p>
                     </div>
-                    <li>Catagories</li>
-                    <li>Deals</li>
+                    <li>Catagories (yet to be added)</li>
+                    <li>Deals (yet to be added)</li>
                     <li onClick={()=>navigate("/Cart")} id="cart"><span>Cart</span><CiShoppingCart/></li>
                     </ul>
                 </div>

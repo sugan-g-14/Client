@@ -6,11 +6,30 @@ import {HiOutlineArrowNarrowLeft} from 'react-icons/hi'
 import {FaTruckFast} from 'react-icons/fa6'
 import {BiTask} from 'react-icons/bi'
 import { useNavigate } from "react-router-dom";
+import { addItem } from "../../Redux/CartSlice";
+import Swal from 'sweetalert2'
+
 
 const Description = () =>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const Desc = useSelector(state => state.Desc);
+    const socket = useSelector(state=>state.Socket.socket)
+    const Cart = useSelector(state=>state.Cart.items);
+
+
+    const handleAddToCart = ()=>{
+        console.log(Desc);
+        if(Cart.some((item)=>JSON.stringify(item.id) === JSON.stringify(Desc.id))){
+            Swal.fire('Already found in the Cart')
+            navigate('/Cart');
+            console.log("Found");
+        }
+        else{
+            socket.emit('AddCart',Desc)
+            dispatch(addItem(Desc));
+        }
+    }
     console.log(Desc);
     return(
         <div className="Description">
@@ -36,7 +55,7 @@ const Description = () =>{
                         <AiOutlineStar/>
                     </div>
                 </div>
-                <div className="Count">
+                {/* <div className="Count">
                     <div className="Count_pro">
                         <button>-</button>
                         <p>1</p>
@@ -45,14 +64,17 @@ const Description = () =>{
                     <div className="Count_desc">
                         <p>only <span>2 items</span> left hurry!</p>
                     </div>
-                </div>
+                </div> */}
                 <div className="price">
                     <h3>${Desc.price}.00 OR $2 per month</h3>
                     <p>Suggested to take 6 months plan</p>
                 </div>
                 <div className="btns">
-                    <button>Buy Now</button>
-                    <button>Add to Cart</button>
+                    <button onClick={()=>{
+                        handleAddToCart();
+                        navigate('/Cart');
+                    }}>Buy Now</button>
+                    <button onClick={()=>handleAddToCart()}>Add to Cart</button>
                 </div>
                 <div className="extras">
                     <div className="Free">
