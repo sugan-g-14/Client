@@ -17,7 +17,7 @@ const Banner = () =>{
     return(
         <div className="Banner">
             <div className="Banner_left">
-                <h1>Grab offer upto 60% on Electronic Gadgets</h1>
+                <h1>Grab offer upto 40% on Used Books</h1>
                 <button>Grab soon</button>
             </div>
             <div className="Banner_right">

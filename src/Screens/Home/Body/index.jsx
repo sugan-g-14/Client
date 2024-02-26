@@ -40,11 +40,13 @@ const Body = ({setPop}) =>{
                 <div className={(Filter)?"view":"hidden"}>
                     <select name="catagory" id="catagory" onChange={(e)=>handleCat(e)}>
                         <option value="">Select Catagory</option>
-                        <option value="men's clothing">Men's clothing</option>
-                        <option value="jewelery">jewelery</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="women's clothing">
-                            Women's clothing</option>
+                        <option value="Fiction books">Fiction books</option>
+                        <option value="Educational">Educational</option>
+                        <option value="Story books">Story books</option>
+                        <option value="Relegious books">Relegious books</option>
+                        <option value="Autobiograph">Autobiograph</option>
+                        <option value="Cook Books">Cook Books</option>
+                        <option value="History">History</option>
                     </select>
                 </div>
             </div>

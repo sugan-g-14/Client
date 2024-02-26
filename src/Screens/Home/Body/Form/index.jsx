@@ -41,13 +41,13 @@ const Form = ({setPop})=>{
         }
     useEffect(()=>{
         if(complete){
-            axios.post('https://ecommerce-backend-ozyi.onrender.com/',formdata)
+            axios.post('http://localhost:5000',formdata)
             .then((res)=>{
-                Swal.fire(
-                    'You added new product!',
-                    'Please refresh the page',
-                    'success'
-                )
+                // Swal.fire(
+                //     'You added new product!',
+                //     'Please refresh the page',
+                //     'success'
+                // )
                 setPop(false);
                 setComplete(false);
             })
@@ -114,10 +114,13 @@ const Form = ({setPop})=>{
                         <label htmlFor="Cat">Category:</label>
                         <select name="category" id="Cat" onChange={(e)=>handleChange(e)}>
                             <option value="">Select Category</option>
-                            <option value="men's clothing">men's clothing</option>
-                            <option value="jewelery">Jewelery</option>
-                            <option value="electronics">Electronics</option>
-                            <option value="women's clothing">Women's clothing</option>
+                            <option value="Fiction books">Fiction books</option>
+                            <option value="Educational">Educational</option>
+                            <option value="Story books">Story books</option>
+                            <option value="Relegious books">Relegious books</option>
+                            <option value="Autobiograph">Autobiograph</option>
+                            <option value="Cook Books">Cook Books</option>
+                            <option value="History">History</option>
                         </select>
                     </div>
                     <div className="btn">
